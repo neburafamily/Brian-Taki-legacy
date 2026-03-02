@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Brian Taki – Official Fan Site</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gradient-to-b from-red-600 via-yellow-400 to-blue-700 text-white font-sans">
+
+  <!-- NAVBAR -->
+  <nav class="bg-black/40 backdrop-blur-md fixed top-0 w-full z-50 text-white">
+    <div class="max-w-6xl mx-auto flex justify-between items-center p-4">
+      <a href="#home" class="text-2xl font-bold">Brian Taki</a>
+      <div class="flex gap-4 text-sm md:text-lg">
+        <a href="#about">About</a>
+        <a href="#music">Music</a>
+        <a href="#media">Media</a>
+        <a href="#fans">Fans</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HOME / HERO -->
+  <section id="home" class="pt-28 pb-16 px-6 text-center">
+    <img src="https://i.ibb.co/mFb6gnt3/copilot-image-1772385068788.png" alt="Brian Taki" class="mx-auto rounded-xl shadow-xl w-64 md:w-80" />
+    <h1 class="text-4xl md:text-5xl font-bold drop-shadow-lg mt-6">Brian Taki</h1>
+    <p class="text-lg md:text-xl mt-2 opacity-90">Kiribati × Solomon Islands Fusion Artist</p>
+    <p class="mt-4 max-w-xl mx-auto">
+      A rising voice of the Pacific, blending Kiribati soul with Solomon Islands groove.
+    </p>
+    <button onclick="scrollToSection('music')" class="mt-6 bg-green-600 px-6 py-3 rounded-full text-lg font-semibold shadow-lg">
+      Listen Now
+    </button>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" class="py-16 px-6 bg-white/10 backdrop-blur-md">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-3xl font-bold mb-6 text-center">About Brian Taki</h2>
+      <img src="https://i.ibb.co/JRDwcN8f/Round-Profile-Brian-Taki.png" alt="Brian portrait" class="rounded-xl shadow-xl w-48 md:w-64 mb-6">
+      <p class="text-lg leading-relaxed">
+        Brian Taki is a gifted Pacific artist whose music blends the heartfelt soul of Kiribati with the rhythmic island groove of the Solomon Islands. His sound carries the warmth of the ocean, the strength of culture, and the spirit of unity.
+      </p>
+      <p class="text-lg mt-4 leading-relaxed">
+        🌊 Full Biography (Narrative Form)
+Brian Taki (date of birth unknown – date of passing unknown) was a Solomon Islands–born musician of Kiribati heritage whose music became a defining voice for Pacific island communities. Raised between two cultures, he developed a sound that blended the emotional storytelling of Kiribati music with the melodic warmth of Solomon Islands acoustic traditions.
+
+His songs—simple, heartfelt, and deeply human—spread organically through families, villages, and diaspora communities long before digital platforms existed. When YouTube and SoundCloud became popular, fans began uploading his tracks, preserving his legacy for future generations.
+
+Brian’s music often explored themes of love, devotion, and longing, delivered with a sincerity that made listeners feel personally connected to him. Tracks like Koron, Aubino, Manin, and Tia Kara remain staples of Kiribati gatherings and island nostalgia.
+
+After his passing, tributes poured in across the Pacific, honoring him as a gifted artist who inspired both Solomon Islanders and I‑Kiribati people. Today, his songs continue to be shared, celebrated, and cherished—keeping his voice alive in the hearts of the communities he touched.
+      </p>
+    </div>
+  </section>
+
+  <!-- MUSIC -->
+  <section id="music" class="py-16 px-6 bg-gradient-to-b from-blue-700 via-green-600 to-yellow-400">
+    <div class="max-w-6xl mx-auto">
+      <h2 class="text-3xl font-bold mb-6 text-center">Music</h2>
+      <p class="text-center mb-8 max-w-2xl mx-auto">
+        Explore Brian’s latest tracks. Tap a song to start playing in the floating player below.
+      </p>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="bg-white/10 p-4 rounded-xl shadow-lg">
+          <img src="https://i.ibb.co/cSMS1D3t/copilot-image-1772386807284.png" class="rounded-lg w-full" alt="Album 1">
+          <h3 class="text-xl font-semibold mt-3">Te Bero</h3>
+          <button onclick="playTrack(0)" class="mt-3 bg-green-700 px-4 py-2 rounded w-full">
+            Play
+          </button>
+        </div>
+
+        <div class="bg-white/10 p-4 rounded-xl shadow-lg">
+          <img src="https://i.ibb.co/cSMS1D3t/copilot-image-1772386807284.png" class="rounded-lg w-full" alt="Album 2">
+          <h3 class="text-xl font-semibold mt-3">Te Bin Te Noko</h3>
+          <button onclick="playTrack(1)" class="mt-3 bg-green-700 px-4 py-2 rounded w-full">
+            Play
+          </button>
+        </div>
+
+        <div class="bg-white/10 p-4 rounded-xl shadow-lg">
+          <img src="https://i.ibb.co/cSMS1D3t/copilot-image-1772386807284.png" class="rounded-lg w-full" alt="Album 3">
+          <h3 class="text-xl font-semibold mt-3">Te Nati Ae Rawa</h3>
+          <button onclick="playTrack(2)" class="mt-3 bg-green-700 px-4 py-2 rounded w-full">
+            Play
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MEDIA -->
+  <section id="media" class="py-16 px-6 bg-white/10 backdrop-blur-md">
+    <div class="max-w-6xl mx-auto">
+      <h2 class="text-3xl font-bold mb-6 text-center">Gallery</h2>
+
+      <h3 class="text-2xl font-semibold mb-4">Memories</h3>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-10">
+        <img src="https://i.ibb.co/DgQ3Fq6n/Brian-Taki-Memories-1.jpg" class="rounded-lg shadow-lg" alt="Memory1">
+        <img src="https://i.ibb.co/YTNF0jCL/Brian-Taki-Memories-2.jpg" class="rounded-lg shadow-lg" alt="Memory2">
+        <img src="https://i.ibb.co/XZBP0k8Y/Brian-Taki-Memories-4.jpg" class="rounded-lg shadow-lg" alt="Memory3">
+        <img src="https://i.ibb.co/234zgWC7/Brian-Taki-memories.jpg" class="rounded-lg shadow-lg" alt="Memory4">
+      </div>
+
+      <h3 class="text-2xl font-semibold mb-4">Videos</h3>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <iframe class="w-full h-64 rounded-xl" src="https://www.youtube.com/watch?v=k3Ff3k8TxIc&list=RDk3Ff3k8TxIc&start_radio=1" title="Brian Taki - Climate Change"></iframe>
+        <iframe class="w-full h-64 rounded-xl" src="https://www.youtube.com/watch?v=dD8WLHRGDFU&list=RDdD8WLHRGDFU&start_radio=1" title="Brian Taki-Ej Armej Eo "></iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- FANS / SIGN-UP -->
+  <section id="fans" class="py-16 px-6 bg-gradient-to-b from-green-600 via-blue-700 to-red-600">
+    <div class="max-w-lg mx-auto">
+      <h2 class="text-3xl font-bold text-center mb-6">Join the Fan Family</h2>
+      <p class="text-center mb-6">
+        Sign up to Support, Brian Taki's Fan Website, Contribute to keeping his music alive.
+      </p>
+
+      <form id="fanForm" class="bg-white/20 p-6 rounded-xl shadow-lg">
+        <input type="text" id="name" placeholder="Your Name" class="w-full p-3 rounded mb-4 text-black" required>
+        <input type="email" id="email" placeholder="Email Address" class="w-full p-3 rounded mb-4 text-black" required>
+        <input type="text" id="country" placeholder="Country" class="w-full p-3 rounded mb-4 text-black">
+        <textarea id="message" placeholder="Why you love Brian’s music (optional)" class="w-full p-3 rounded mb-4 text-black"></textarea>
+        <button class="w-full bg-yellow-500 py-3 rounded-lg font-semibold">
+          Join
+        </button>
+      </form>
+
+      <p id="success" class="text-center mt-4 hidden">
+        Mauri! You’re now part of the Brian Taki fan family. Keep an eye on your inbox for updates and exclusive content!
+      </p>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="py-16 px-6 bg-white/10 backdrop-blur-md">
+    <div class="max-w-xl mx-auto">
+      <h2 class="text-3xl font-bold mb-6 text-center">Contact</h2>
+      <p class="mb-4 text-center">
+        To connect to other fans around the world, or connect to the family, please reach out to us through the following channels:
+      </p>
+
+      <p class="text-lg font-semibold text-center">Email</p>
+      <p class="mb-4 text-center">management@briantaki.com</p>
+
+      <p class="text-lg font-semibold text-center">Socials</p>
+      <ul class="list-disc ml-6 mt-2">
+        <li>Facebook</li>
+        <li>YouTube</li>
+        <li>Instagram</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="py-6 text-center text-sm bg-black/40">
+    <p>© <span id="year"></span> Brian Taki. All rights reserved.</p>
+  </footer>
+
+  <!-- FLOATING MUSIC PLAYER -->
+  <div class="fixed bottom-0 left-0 w-full bg-black/80 text-white p-3 flex items-center justify-between z-50">
+    <div id="track-title" class="font-semibold text-sm md:text-base">Track 1</div>
+    <div class="flex gap-3 text-xl">
+      <button onclick="prevTrack()">⏮️</button>
+      <button onclick="playPause()">⏯️</button>
+      <button onclick="nextTrack()">⏭️</button>
+    </div>
+  </div>
+
+  <!-- SCRIPTS -->
+  <script>
+    // Smooth scroll
+    function scrollToSection(id) {
+      document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+    }
+
+    // Year
+    document.getElementById('year').innerText = new Date().getFullYear();
+
+    // Floating player
+    const tracks = [
+      { title: "Te Bero", src: "https://TioteeRibabaiti.publit.io/file/nootouee-te-beroo-brian-taki.mp3" },
+      { title: "Te Bin Te Noko", src: "https://TioteeRibabaiti.publit.io/file/nootouee-te-bin-te-noko-brian-taki.mp3" },
+      { title: "Te Nati Ae Rawa", src: "https://TioteeRibabaiti.publit.io/file/nootouee-te-nati-ae-rawa-brian-taki.mp3" },
+      { title: "Ngaia E Aki", src: "https://TioteeRibabaiti.publit.io/file/nootouee-ngaia-e-aki-brian-taki.mp3" },
+      { title: "Motin Te Iango", src: "https://TioteeRibabaiti.publit.io/file/nootouee-motin-te-iango-brian-taki.mp3" },
+      { title: "Moan Rokou Ngai", src: "https://TioteeRibabaiti.publit.io/file/nootouee-moan-rokou-ngai-brian-taki.mp3" },
+      { title: "Kona Irana", src: "https://TioteeRibabaiti.publit.io/file/nootouee-kona-irana-brian-taki.mp3" },
+      { title: "Moan Noran", src: "https://TioteeRibabaiti.publit.io/file/nootouee-moan-noran-brian-taki.mp3" },
+      { title: "Iaoni Kieu", src: "https://TioteeRibabaiti.publit.io/file/nootouee-iaoni-kieu-brian-taki.mp3" },
+      { title: "I Teitei Ngai", src: "https://TioteeRibabaiti.publit.io/file/nootouee-i-teitei-ngai-brian-taki.mp3" }
+
+];
+
+    let current = 0;
+    let audio = new Audio(tracks[current].src);
+    const titleEl = document.getElementById("track-title");
+
+    function updateTitle() {
+      titleEl.innerText = tracks[current].title;
+    }
+
+    function playTrack(i) {
+      current = i;
+      audio.src = tracks[current].src;
+      audio.play();
+      updateTitle();
+    }
+
+    function playPause() {
+      if (audio.paused) audio.play();
+      else audio.pause();
+    }
+
+    function nextTrack() {
+      current = (current + 1) % tracks.length;
+      playTrack(current);
+    }
+
+    function prevTrack() {
+      current = (current - 1 + tracks.length) % tracks.length;
+      playTrack(current);
+    }
+
+    updateTitle();
+
+    // Fan form (front-end only)
+    document.getElementById("fanForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      document.getElementById("success").classList.remove("hidden");
+      this.reset();
+    });
+  </script>
+
+</body>
+</html>
