@@ -1,242 +1,548 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Brian Taki – Official Fan Site</title>
-  <script src="https://cdn.tailwindcss.com"></script>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Brian Taki — Legacy & Biography</title>
+  <style>
+    :root{
+      --green-700:#2f6b4a;
+      --green-600:#3c8a5c;
+      --bg:#f5f7f4;
+      --text:#1f2d24;
+      --muted:#cdd8d2;
+      --card:#ffffff;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: "Segoe UI", Arial, sans-serif;
+      background:var(--bg);
+      color:var(--text);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.6;
+    }
+    .hero{
+      background:linear-gradient(135deg,var(--green-700),var(--green-600));
+      color:#fff;
+      padding:3.5rem 1rem;
+      text-align:center;
+    }
+    .hero h1{margin:0;font-family:Georgia,serif;font-size:2.6rem}
+    .subtitle{margin-top:0.5rem;opacity:0.95;font-size:1.05rem}
+    .container{
+      max-width:1000px;
+      margin:1.5rem auto;
+      padding:0 1rem 3rem;
+    }
+    .bio-section{display:flex;flex-wrap:wrap;gap:1.5rem;margin-bottom:1.75rem}
+    .bio-image img{
+      width:280px;max-width:100%;border-radius:14px;object-fit:cover;
+      box-shadow:0 10px 25px rgba(0,0,0,0.12);
+    }
+    .bio-text{flex:1;min-width:260px}
+    .bio-text h2{color:var(--green-700);margin-top:0}
+    button{font-family:inherit}
+    .contribute-btn,.primary-btn{
+      background:var(--green-700);color:#fff;padding:12px 18px;border:none;border-radius:12px;
+      font-weight:600;cursor:pointer;box-shadow:0 6px 18px rgba(0,0,0,0.12);
+    }
+    .primary-btn{display:inline-block}
+    .secondary-btn{
+      background:transparent;color:var(--green-700);padding:10px 16px;border:1px solid var(--muted);border-radius:12px;margin-left:0.5rem;cursor:pointer;
+    }
+    .contribute-btn:hover,.primary-btn:hover{background:var(--green-600);transform:translateY(-2px)}
+    .secondary-btn:hover{background:#f0f6f1}
+    .music-player{background:var(--card);padding:1.5rem;border-radius:14px;box-shadow:0 8px 20px rgba(0,0,0,0.06);margin-bottom:1.75rem}
+    .music-player h2{color:var(--green-700);margin-top:0}
+    .player-card{display:flex;align-items:center;justify-content:space-between;padding:0.6rem 0;border-bottom:1px solid #eef3ee}
+    .player-card:last-child{border-bottom:0}
+    .song-title{font-weight:600;margin:0}
+    .song-actions{display:flex;gap:0.6rem;align-items:center}
+    .play-btn{background:transparent;border:1px solid #fff;padding:8px 12px;border-radius:10px;background:var(--green-700);color:#fff;cursor:pointer}
+    .download-link{font-size:0.9rem;color:var(--green-700);text-decoration:none;padding:6px 10px;border-radius:8px;border:1px solid var(--muted);background:#fbfdfb}
+    .photo-gallery{margin-bottom:1.75rem}
+    .photo-gallery h2{color:var(--green-700)}
+    .gallery-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:0.8rem}
+    .gallery-item{background:transparent;border:0;padding:0;border-radius:10px;overflow:hidden;cursor:pointer}
+    .gallery-item img{width:100%;height:100%;object-fit:cover;border-radius:10px;display:block;box-shadow:0 6px 16px rgba(0,0,0,0.12);transition:transform .18s ease}
+    .gallery-item img:hover{transform:scale(1.02)}
+    .tribute-wall{background:var(--card);padding:1.5rem;border-radius:14px;box-shadow:0 8px 20px rgba(0,0,0,0.06);margin-bottom:1.75rem}
+    .tribute-wall h2{color:var(--green-700)}
+    .tribute-form textarea{width:100%;min-height:100px;padding:12px;border-radius:12px;border:1px solid var(--muted);resize:none;font-size:1rem}
+    .form-actions{margin-top:0.8rem;text-align:right}
+    .tribute-list{margin-top:1rem}
+    .tribute-card{background:#f7faf7;padding:12px;border-radius:10px;margin-bottom:0.8rem;border-left:4px solid var(--green-700)}
+    .contribute-info{background:var(--card);padding:1.5rem;border-radius:14px;box-shadow:0 8px 20px rgba(0,0,0,0.06);margin-bottom:2rem}
+    .contribute-actions{margin-top:1rem}
+    .footer{text-align:center;padding:1rem;background:#e7eee9;color:var(--green-700);font-size:0.95rem}
+    .floating-player{
+      position:fixed;left:0;right:0;bottom:0;display:flex;align-items:center;gap:1rem;padding:0.7rem 1rem;background:var(--green-700);color:#fff;z-index:999;border-top-left-radius:12px;border-top-right-radius:12px;box-shadow:0 -6px 18px rgba(0,0,0,0.18)
+    }
+    .floating-player audio{width:100%;max-width:420px}
+    .player-info{font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:40%}
+    .player-close{background:transparent;border:1px solid rgba(255,255,255,0.2);color:#fff;padding:8px 10px;border-radius:10px;cursor:pointer}
+    .lightbox{position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(0,0,0,0.7);z-index:1000;padding:1rem}
+    .lightbox img{max-width:90%;max-height:70vh;border-radius:8px;box-shadow:0 12px 40px rgba(0,0,0,0.6)}
+    .lightbox p{color:#fff;margin-top:0.6rem}
+    .lightbox-close{margin-top:0.6rem;padding:8px 12px;border-radius:10px;border:0;background:var(--green-700);color:#fff}
+    .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+    @media (max-width:640px){
+      .player-info{display:none}
+      .bio-image img{width:100%;border-radius:12px}
+      .floating-player{flex-direction:column;align-items:flex-start;gap:0.6rem;padding:0.8rem}
+      .floating-player audio{max-width:100%}
+    }
+    .social-links {
+  background: var(--card);
+  padding: 1.5rem;
+  border-radius: 14px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+  margin-bottom: 1.75rem;
+  text-align: center;
+}
+.support-section {
+  background: var(--card);
+  padding: 1.5rem;
+  border-radius: 14px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+  margin-bottom: 2rem;
+}
+
+.support-section h2 {
+  color: var(--green-700);
+  margin-top: 0;
+}
+
+.support-buttons {
+  margin-top: 1rem;
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+/* Floating Social Bar */
+.floating-social {
+  position: fixed;
+  right: 20px;
+  bottom: 120px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  z-index: 999;
+}
+
+.floating-social a img {
+  width: 42px;
+  height: 42px;
+  background: var(--green-700);
+  padding: 10px;
+  border-radius: 50%;
+  filter: brightness(0) invert(1);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.18);
+  transition: 0.2s ease;
+}
+
+.floating-social a img:hover {
+  background: var(--green-600);
+  transform: translateY(-3px);
+}
+
+/* Floating Support Button */
+.floating-support {
+  position: fixed;
+  left: 20px;
+  bottom: 120px;
+  z-index: 999;
+}
+
+.floating-support button {
+  background: var(--green-700);
+  color: white;
+  padding: 12px 18px;
+  border: none;
+  border-radius: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.18);
+  transition: 0.2s ease;
+}
+
+.floating-support button:hover {
+  background: var(--green-600);
+  transform: translateY(-3px);
+}
+
+/* Support Panel */
+.support-panel {
+  position: fixed;
+  left: 20px;
+  bottom: 180px;
+  background: var(--card);
+  border-radius: 14px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.18);
+  padding: 1.2rem;
+  width: 260px;
+  display: none;
+  z-index: 1000;
+}
+
+.support-panel-content h3 {
+  margin-top: 0;
+  color: var(--green-700);
+}
+
+.support-btn {
+  width: 100%;
+  margin-top: 0.8rem;
+}
+
+.close-support {
+  margin-top: 1rem;
+  background: transparent;
+  border: 1px solid var(--muted);
+  padding: 8px 12px;
+  border-radius: 10px;
+  cursor: pointer;
+  width: 100%;
+  color: var(--green-700);
+}
+
+.close-support:hover {
+  background: #f0f6f1;
+}
+
+
+   </style>
 </head>
+<body>
 
-<body class="bg-gradient-to-b from-red-600 via-yellow-400 to-blue-700 text-white font-sans">
-
-  <!-- NAVBAR -->
-  <nav class="bg-black/40 backdrop-blur-md fixed top-0 w-full z-50 text-white">
-    <div class="max-w-6xl mx-auto flex justify-between items-center p-4">
-      <a href="#home" class="text-2xl font-bold">Brian Taki</a>
-      <div class="flex gap-4 text-sm md:text-lg">
-        <a href="#about">About</a>
-        <a href="#music">Music</a>
-        <a href="#media">Media</a>
-        <a href="#fans">Fans</a>
-        <a href="#contact">Contact</a>
-      </div>
+  <header class="hero" role="banner">
+    <div class="hero-content">
+      <h1>Brian Taki</h1>
+      <p class="subtitle">Solomon Islands — Kiribati Musician & Cultural Icon</p>
     </div>
-  </nav>
+  </header>
 
-  <!-- HOME / HERO -->
-  <section id="home" class="pt-28 pb-16 px-6 text-center">
-    <img src="https://i.ibb.co/mFb6gnt3/copilot-image-1772385068788.png" alt="Brian Taki" class="mx-auto rounded-xl shadow-xl w-64 md:w-80" />
-    <h1 class="text-4xl md:text-5xl font-bold drop-shadow-lg mt-6">Brian Taki</h1>
-    <p class="text-lg md:text-xl mt-2 opacity-90">Kiribati × Solomon Islands Fusion Artist</p>
-    <p class="mt-4 max-w-xl mx-auto">
-      A rising voice of the Pacific, blending Kiribati soul with Solomon Islands groove.
-    </p>
-    <button onclick="scrollToSection('music')" class="mt-6 bg-green-600 px-6 py-3 rounded-full text-lg font-semibold shadow-lg">
-      Listen Now
-    </button>
-  </section>
+  <main class="container" role="main">
 
-  <!-- ABOUT -->
-  <section id="about" class="py-16 px-6 bg-white/10 backdrop-blur-md">
-    <div class="max-w-4xl mx-auto">
-      <h2 class="text-3xl font-bold mb-6 text-center">About Brian Taki</h2>
-      <img src="https://i.ibb.co/JRDwcN8f/Round-Profile-Brian-Taki.png" alt="Brian portrait" class="rounded-xl shadow-xl w-48 md:w-64 mb-6">
-      <p class="text-lg leading-relaxed">
-        Brian Taki is a gifted Pacific artist whose music blends the heartfelt soul of Kiribati with the rhythmic island groove of the Solomon Islands. His sound carries the warmth of the ocean, the strength of culture, and the spirit of unity.
-      </p>
-      <p class="text-lg mt-4 leading-relaxed">
-        🌊 Full Biography (Narrative Form)
-Brian Taki (date of birth unknown – date of passing unknown) was a Solomon Islands–born musician of Kiribati heritage whose music became a defining voice for Pacific island communities. Raised between two cultures, he developed a sound that blended the emotional storytelling of Kiribati music with the melodic warmth of Solomon Islands acoustic traditions.
-
-His songs—simple, heartfelt, and deeply human—spread organically through families, villages, and diaspora communities long before digital platforms existed. When YouTube and SoundCloud became popular, fans began uploading his tracks, preserving his legacy for future generations.
-
-Brian’s music often explored themes of love, devotion, and longing, delivered with a sincerity that made listeners feel personally connected to him. Tracks like Koron, Aubino, Manin, and Tia Kara remain staples of Kiribati gatherings and island nostalgia.
-
-After his passing, tributes poured in across the Pacific, honoring him as a gifted artist who inspired both Solomon Islanders and I‑Kiribati people. Today, his songs continue to be shared, celebrated, and cherished—keeping his voice alive in the hearts of the communities he touched.
-      </p>
-    </div>
-  </section>
-
-  <!-- MUSIC -->
-  <section id="music" class="py-16 px-6 bg-gradient-to-b from-blue-700 via-green-600 to-yellow-400">
-    <div class="max-w-6xl mx-auto">
-      <h2 class="text-3xl font-bold mb-6 text-center">Music</h2>
-      <p class="text-center mb-8 max-w-2xl mx-auto">
-        Explore Brian’s latest tracks. Tap a song to start playing in the floating player below.
-      </p>
-
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <div class="bg-white/10 p-4 rounded-xl shadow-lg">
-          <img src="https://i.ibb.co/cSMS1D3t/copilot-image-1772386807284.png" class="rounded-lg w-full" alt="Album 1">
-          <h3 class="text-xl font-semibold mt-3">Te Bero</h3>
-          <button onclick="playTrack(0)" class="mt-3 bg-green-700 px-4 py-2 rounded w-full">
-            Play
-          </button>
-        </div>
-
-        <div class="bg-white/10 p-4 rounded-xl shadow-lg">
-          <img src="https://i.ibb.co/cSMS1D3t/copilot-image-1772386807284.png" class="rounded-lg w-full" alt="Album 2">
-          <h3 class="text-xl font-semibold mt-3">Te Bin Te Noko</h3>
-          <button onclick="playTrack(1)" class="mt-3 bg-green-700 px-4 py-2 rounded w-full">
-            Play
-          </button>
-        </div>
-
-        <div class="bg-white/10 p-4 rounded-xl shadow-lg">
-          <img src="https://i.ibb.co/cSMS1D3t/copilot-image-1772386807284.png" class="rounded-lg w-full" alt="Album 3">
-          <h3 class="text-xl font-semibold mt-3">Te Nati Ae Rawa</h3>
-          <button onclick="playTrack(2)" class="mt-3 bg-green-700 px-4 py-2 rounded w-full">
-            Play
-          </button>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- MEDIA -->
-  <section id="media" class="py-16 px-6 bg-white/10 backdrop-blur-md">
-    <div class="max-w-6xl mx-auto">
-      <h2 class="text-3xl font-bold mb-6 text-center">Gallery</h2>
-
-      <h3 class="text-2xl font-semibold mb-4">Memories</h3>
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-10">
-        <img src="https://i.ibb.co/DgQ3Fq6n/Brian-Taki-Memories-1.jpg" class="rounded-lg shadow-lg" alt="Memory1">
-        <img src="https://i.ibb.co/YTNF0jCL/Brian-Taki-Memories-2.jpg" class="rounded-lg shadow-lg" alt="Memory2">
-        <img src="https://i.ibb.co/XZBP0k8Y/Brian-Taki-Memories-4.jpg" class="rounded-lg shadow-lg" alt="Memory3">
-        <img src="https://i.ibb.co/234zgWC7/Brian-Taki-memories.jpg" class="rounded-lg shadow-lg" alt="Memory4">
+    <section class="bio-section" aria-labelledby="bio-heading">
+      <div class="bio-image" aria-hidden="true">
+        <img src="https://i.ibb.co/JRDwcN8f/Round-Profile-Brian-Taki.png" alt="Portrait of Brian Taki" />
       </div>
 
-      <h3 class="text-2xl font-semibold mb-4">Videos</h3>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <iframe class="w-full h-64 rounded-xl" src="https://www.youtube.com/watch?v=k3Ff3k8TxIc&list=RDk3Ff3k8TxIc&start_radio=1" title="Brian Taki - Climate Change"></iframe>
-        <iframe class="w-full h-64 rounded-xl" src="https://www.youtube.com/watch?v=dD8WLHRGDFU&list=RDdD8WLHRGDFU&start_radio=1" title="Brian Taki-Ej Armej Eo "></iframe>
-      </div>
-    </div>
-  </section>
+      <div class="bio-text">
+        <h2 id="bio-heading">Biography</h2>
 
-  <!-- FANS / SIGN-UP -->
-  <section id="fans" class="py-16 px-6 bg-gradient-to-b from-green-600 via-blue-700 to-red-600">
-    <div class="max-w-lg mx-auto">
-      <h2 class="text-3xl font-bold text-center mb-6">Join the Fan Family</h2>
-      <p class="text-center mb-6">
-        Sign up to Support, Brian Taki's Fan Website, Contribute to keeping his music alive.
-      </p>
+        <p>
+          Brian Taki was a Solomon Islands–born musician of Kiribati heritage whose warm acoustic sound and heartfelt storytelling made him one of the most beloved artists across the Pacific. His music carried the spirit of island life — gentle, emotional, and deeply human.
+        </p>
 
-      <form id="fanForm" class="bg-white/20 p-6 rounded-xl shadow-lg">
-        <input type="text" id="name" placeholder="Your Name" class="w-full p-3 rounded mb-4 text-black" required>
-        <input type="email" id="email" placeholder="Email Address" class="w-full p-3 rounded mb-4 text-black" required>
-        <input type="text" id="country" placeholder="Country" class="w-full p-3 rounded mb-4 text-black">
-        <textarea id="message" placeholder="Why you love Brian’s music (optional)" class="w-full p-3 rounded mb-4 text-black"></textarea>
-        <button class="w-full bg-yellow-500 py-3 rounded-lg font-semibold">
-          Join
+        <p>
+          His songs explored love, longing, family, and cultural pride. With tracks such as <em>Koron</em>, <em>Aubino</em>, <em>Manin</em>, and <em>Tia Kara</em>, he touched the hearts of communities in Kiribati, the Solomon Islands, and the wider diaspora.
+        </p>
+
+        <p>
+          Even after his passing, Brian Taki’s legacy continues through the voices of those who sing his songs, the families who remember him, and the communities who honor his contribution to Pacific music.
+        </p>
+
+        <button class="contribute-btn" onclick="openContribute()" aria-label="Scroll to contribute section">
+          Contribute to the Legacy
         </button>
+      </div>
+    </section>
+
+    <section class="music-player" aria-labelledby="music-heading">
+      <h2 id="music-heading">Featured Songs</h2>
+
+      <div class="player-card">
+        <p class="song-title">Te Bero</p>
+        <div class="song-actions">
+          <button class="play-btn" onclick="playSong('https://TioteeRibabaiti.publit.io/file/nootouee-te-beroo-brian-taki.mp3','te-beroo-brian-taki')">Play</button>
+          <a class="download-link" href="https://TioteeRibabaiti.publit.io/file/nootouee-te-beroo-brian-taki.mp3" download>Download</a>
+        </div>
+      </div>
+
+      <div class="player-card">
+        <p class="song-title">Ngaia e Aki</p>
+        <div class="song-actions">
+          <button class="play-btn" onclick="playSong('https://TioteeRibabaiti.publit.io/file/nootouee-ngaia-e-aki-brian-taki.mp3','Ngaia e Aki')">Play</button>
+          <a class="download-link" href="https://TioteeRibabaiti.publit.io/file/nootouee-ngaia-e-aki-brian-taki.mp3" download>Download</a>
+        </div>
+      </div>
+
+       <div class="player-card">
+        <p class="song-title">Motin te Iango</p>
+        <div class="song-actions">
+          <button class="play-btn" onclick="playSong('https://TioteeRibabaiti.publit.io/file/nootouee-motin-te-iango-brian-taki.mp3','Motin te Iango')">Play</button>
+          <a class="download-link" href="https://TioteeRibabaiti.publit.io/file/nootouee-motin-te-iango-brian-taki.mp3" download>Download</a>
+        </div>
+      </div>
+
+       <div class="player-card">
+        <p class="song-title">Moan Rokou Ngai</p>
+        <div class="song-actions">
+          <button class="play-btn" onclick="playSong('https://TioteeRibabaiti.publit.io/file/nootouee-moan-rokou-ngai-brian-taki.mp3','Moan Rokou Ngai')">Play</button>
+          <a class="download-link" href="https://TioteeRibabaiti.publit.io/file/nootouee-moan-rokou-ngai-brian-taki.mp3" download>Download</a>
+        </div>
+      </div>
+
+      <div class="player-card">
+        <p class="song-title">Kona Irana</p>
+        <div class="song-actions">
+          <button class="play-btn" onclick="playSong('https://TioteeRibabaiti.publit.io/file/nootouee-kona-irana-brian-taki.mp3','Kona Irana')">Play</button>
+          <a class="download-link" href="https://TioteeRibabaiti.publit.io/file/nootouee-kona-irana-brian-taki.mp3" download>Download</a>
+        </div>
+      </div>
+    
+       <div class="player-card">
+        <p class="song-title">Moan Noran</p>
+        <div class="song-actions">
+          <button class="play-btn" onclick="playSong('https://TioteeRibabaiti.publit.io/file/nootouee-moan-noran-brian-taki.mp3','Moan Noran')">Play</button>
+          <a class="download-link" href="https://TioteeRibabaiti.publit.io/file/nootouee-moan-noran-brian-taki.mp3" download>Download</a>
+        </div>
+      </div>
+    
+        <div class="player-card">
+        <p class="song-title">Iaon Kieu</p>
+        <div class="song-actions">
+          <button class="play-btn" onclick="playSong('https://TioteeRibabaiti.publit.io/file/nootouee-iaoni-kieu-brian-taki.mp3','Iaon Kieu')">Play</button>
+          <a class="download-link" href="https://TioteeRibabaiti.publit.io/file/nootouee-iaoni-kieu-brian-taki.mp3" download>Download</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="photo-gallery" aria-labelledby="gallery-heading">
+      <h2 id="gallery-heading">Photo Gallery</h2>
+
+      <div class="gallery-grid" id="galleryGrid">
+        <button class="gallery-item" onclick="openLightbox('https://i.ibb.co/xSLfcwbF/Brian-Taki-Performance.jpg','Brian Taki performing')">
+          <img src="https://i.ibb.co/xSLfcwbF/Brian-Taki-Performance.jpg" alt="Brian Taki performing" />
+        </button>
+        <button class="gallery-item" onclick="openLightbox('https://i.ibb.co/DgQ3Fq6n/Brian-Taki-Memories-1.jpg','Brian Taki portrait')">
+          <img src="https://i.ibb.co/DgQ3Fq6n/Brian-Taki-Memories-1.jpg" alt="Brian Taki portrait" />
+        </button>
+        <button class="gallery-item" onclick="openLightbox('https://i.ibb.co/XZBP0k8Y/Brian-Taki-Memories-4.jpg','Brian Taki with community')">
+          <img src="https://i.ibb.co/XZBP0k8Y/Brian-Taki-Memories-4.jpg" alt="Brian Taki with community" />
+        </button>
+        <button class="gallery-item" onclick="openLightbox('https://i.ibb.co/234zgWC7/Brian-Taki-memories.jpg','Brian Taki studio')">
+          <img src="https://i.ibb.co/234zgWC7/Brian-Taki-memories.jpg" alt="Brian Taki studio" />
+        </button>
+      </div>
+    </section>
+
+    <section class="tribute-wall" aria-labelledby="tribute-heading">
+      <h2 id="tribute-heading">Tribute Wall</h2>
+
+      <form class="tribute-form" onsubmit="addTribute(event)" aria-label="Post a tribute message">
+        <label for="tributeMessage" class="sr-only">Share your message</label>
+        <textarea id="tributeMessage" placeholder="Share a memory or message..." required></textarea>
+        <div class="form-actions">
+          <button type="submit" class="primary-btn">Post Tribute</button>
+        </div>
       </form>
 
-      <p id="success" class="text-center mt-4 hidden">
-        Mauri! You’re now part of the Brian Taki fan family. Keep an eye on your inbox for updates and exclusive content!
-      </p>
-    </div>
-  </section>
+      <div id="tributeList" class="tribute-list" aria-live="polite"></div>
+    </section>
 
-  <!-- CONTACT -->
-  <section id="contact" class="py-16 px-6 bg-white/10 backdrop-blur-md">
-    <div class="max-w-xl mx-auto">
-      <h2 class="text-3xl font-bold mb-6 text-center">Contact</h2>
-      <p class="mb-4 text-center">
-        To connect to other fans around the world, or connect to the family, please reach out to us through the following channels:
-      </p>
+    <section class="support-section" aria-labelledby="support-heading">
+  <h2 id="support-heading">Support the Legacy</h2>
 
-      <p class="text-lg font-semibold text-center">Email</p>
-      <p class="mb-4 text-center">management@briantaki.com</p>
+  <p>Contributions help preserve Brian Taki’s music, support cultural preservation projects, and assist community initiatives that honor Pacific artists. Contributions may be used for archiving recordings, supporting family or community events, and educational programs.
 
-      <p class="text-lg font-semibold text-center">Socials</p>
-      <ul class="list-disc ml-6 mt-2">
-        <li>Facebook</li>
-        <li>YouTube</li>
-        <li>Instagram</li>
-      </ul>
-    </div>
-  </section>
+  </p>
 
-  <!-- FOOTER -->
-  <footer class="py-6 text-center text-sm bg-black/40">
-    <p>© <span id="year"></span> Brian Taki. All rights reserved.</p>
+  <div class="support-buttons">
+    <a href="https://buy.stripe.com/test_28EcN57Zb6Mtcpz9vT8N200" 
+       class="primary-btn" 
+       target="_blank">
+      Support via Stripe
+    </a>
+  </div>
+
+  <div class="support-buttons">
+  <form action="https://www.paypal.com/donate" method="post" target="_blank">
+    <input type="hidden" name="hosted_button_id" value="https://www.paypal.com/ncp/payment/55QYBX8F3TFWU" />
+    <button class="secondary-btn" type="submit">Donate with PayPal</button>
+  </form>
+</div>
+</section>
+
+<div class="floating-support">
+  <button onclick="openSupportPanel()" aria-label="Support Brian Taki Legacy">
+    ❤️ Support
+  </button>
+</div>
+
+<!-- Support Panel -->
+<div id="supportPanel" class="support-panel">
+  <div class="support-panel-content">
+    <h3>Support the Legacy</h3>
+    <p>Your contribution helps preserve Brian Taki’s music and cultural heritage.</p>
+
+    <a href="https://buy.stripe.com/test_28EcN57Zb6Mtcpz9vT8N200"
+       target="_blank"
+       class="primary-btn support-btn">
+      Support via Stripe
+    </a>
+
+    <form action="https://www.paypal.com/donate" method="post" target="_blank">
+      <input type="hidden" name="hosted_button_id" value="https://www.paypal.com/ncp/payment/55QYBX8F3TFWU" />
+      <button type="submit" class="secondary-btn support-btn">
+        Donate with PayPal
+      </button>
+    </form>
+
+    <button class="close-support" onclick="closeSupportPanel()">Close</button>
+  </div>
+</div>
+
+
+  </main>
+
+  <footer class="footer" role="contentinfo">
+    <p>© 2026 Brian Taki Legacy Project</p>
   </footer>
 
-  <!-- FLOATING MUSIC PLAYER -->
-  <div class="fixed bottom-0 left-0 w-full bg-black/80 text-white p-3 flex items-center justify-between z-50">
-    <div id="track-title" class="font-semibold text-sm md:text-base">Track 1</div>
-    <div class="flex gap-3 text-xl">
-      <button onclick="prevTrack()">⏮️</button>
-      <button onclick="playPause()">⏯️</button>
-      <button onclick="nextTrack()">⏭️</button>
+  <div class="floating-player" id="floatingPlayer" aria-hidden="false">
+    <div class="player-info" id="playerInfo">
+      <span id="currentSong">No song playing</span>
+    </div>
+    <audio id="audioPlayer" controls preload="none">
+      <source id="audioSource" src="" type="audio/mpeg" />
+      Your browser does not support the audio element.
+    </audio>
+    <button class="player-close" onclick="pausePlayer()" aria-label="Pause player">Pause</button>
+  </div>
+
+  <div id="lightbox" class="lightbox" onclick="closeLightbox()" role="dialog" aria-modal="true" aria-hidden="true">
+    <div style="text-align:center">
+      <img id="lightboxImg" alt="" />
+      <p id="lightboxCaption"></p>
+      <button class="lightbox-close" onclick="closeLightbox()" aria-label="Close image">Close</button>
     </div>
   </div>
 
-  <!-- SCRIPTS -->
   <script>
-    // Smooth scroll
-    function scrollToSection(id) {
-      document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+    function openContribute() {
+      const section = document.getElementById("contribute-section");
+      if (section) section.scrollIntoView({ behavior: "smooth", block: "center" });
     }
 
-    // Year
-    document.getElementById('year').innerText = new Date().getFullYear();
+    function playSong(file, title) {
+      const audio = document.getElementById("audioPlayer");
+      const source = document.getElementById("audioSource");
+      const label = document.getElementById("currentSong");
+      if (!audio || !source || !label) return;
 
-    // Floating player
-    const tracks = [
-      { title: "Te Bero", src: "https://TioteeRibabaiti.publit.io/file/nootouee-te-beroo-brian-taki.mp3" },
-      { title: "Te Bin Te Noko", src: "https://TioteeRibabaiti.publit.io/file/nootouee-te-bin-te-noko-brian-taki.mp3" },
-      { title: "Te Nati Ae Rawa", src: "https://TioteeRibabaiti.publit.io/file/nootouee-te-nati-ae-rawa-brian-taki.mp3" },
-      { title: "Ngaia E Aki", src: "https://TioteeRibabaiti.publit.io/file/nootouee-ngaia-e-aki-brian-taki.mp3" },
-      { title: "Motin Te Iango", src: "https://TioteeRibabaiti.publit.io/file/nootouee-motin-te-iango-brian-taki.mp3" },
-      { title: "Moan Rokou Ngai", src: "https://TioteeRibabaiti.publit.io/file/nootouee-moan-rokou-ngai-brian-taki.mp3" },
-      { title: "Kona Irana", src: "https://TioteeRibabaiti.publit.io/file/nootouee-kona-irana-brian-taki.mp3" },
-      { title: "Moan Noran", src: "https://TioteeRibabaiti.publit.io/file/nootouee-moan-noran-brian-taki.mp3" },
-      { title: "Iaoni Kieu", src: "https://TioteeRibabaiti.publit.io/file/nootouee-iaoni-kieu-brian-taki.mp3" },
-      { title: "I Teitei Ngai", src: "https://TioteeRibabaiti.publit.io/file/nootouee-i-teitei-ngai-brian-taki.mp3" }
+      // If same file and playing, pause
+      if (source.src && source.src.includes(file) && !audio.paused) {
+        audio.pause();
+        label.textContent = 'Paused';
+        return;
+      }
 
-];
+      source.src = file;
+      audio.load();
+      audio.play().catch(() => {
+        label.textContent = title + ' (ready)';
+      });
 
-    let current = 0;
-    let audio = new Audio(tracks[current].src);
-    const titleEl = document.getElementById("track-title");
-
-    function updateTitle() {
-      titleEl.innerText = tracks[current].title;
+      label.textContent = title;
     }
 
-    function playTrack(i) {
-      current = i;
-      audio.src = tracks[current].src;
-      audio.play();
-      updateTitle();
+    function pausePlayer() {
+      const audio = document.getElementById("audioPlayer");
+      const label = document.getElementById("currentSong");
+      if (audio && !audio.paused) {
+        audio.pause();
+        if (label) label.textContent = 'Paused';
+      } else if (audio && audio.paused) {
+        audio.play();
+        if (label) label.textContent = 'Playing';
+      }
     }
 
-    function playPause() {
-      if (audio.paused) audio.play();
-      else audio.pause();
+    function addTribute(event) {
+      event.preventDefault();
+      const textarea = document.getElementById("tributeMessage");
+      const message = textarea.value.trim();
+      if (!message) return;
+
+      const tributeList = document.getElementById("tributeList");
+      const card = document.createElement("div");
+      card.className = "tribute-card";
+      const time = new Date().toLocaleString();
+      card.innerHTML = '<div>' + escapeHtml(message) + '</div><div style="font-size:0.85rem;color:#6b7a6f;margin-top:8px">' + time + '</div>';
+
+      tributeList.prepend(card);
+      textarea.value = "";
     }
 
-    function nextTrack() {
-      current = (current + 1) % tracks.length;
-      playTrack(current);
+    function escapeHtml(str) {
+      return str.replace(/[&<>"'`=\/]/g, function(s) {
+        return ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;','/':'&#x2F;','`':'&#x60;','=':'&#x3D;'})[s];
+      });
     }
 
-    function prevTrack() {
-      current = (current - 1 + tracks.length) % tracks.length;
-      playTrack(current);
+    function openLightbox(src, caption) {
+      const lb = document.getElementById("lightbox");
+      const img = document.getElementById("lightboxImg");
+      const cap = document.getElementById("lightboxCaption");
+      if (!lb || !img || !cap) return;
+      img.src = src;
+      img.alt = caption || '';
+      cap.textContent = caption || '';
+      lb.style.display = "flex";
+      lb.setAttribute('aria-hidden','false');
+    }
+    function closeLightbox() {
+      const lb = document.getElementById("lightbox");
+      if (!lb) return;
+      lb.style.display = "none";
+      lb.setAttribute('aria-hidden','true');
     }
 
-    updateTitle();
+    function openContributionModal() {
+      alert("Contribution flow coming soon. Prepare payment and archival options.");
+    }
+    function openTributeModal() {
+      const el = document.getElementById("tributeMessage");
+      if (el) el.focus();
+    }
 
-    // Fan form (front-end only)
-    document.getElementById("fanForm").addEventListener("submit", function(e) {
-      e.preventDefault();
-      document.getElementById("success").classList.remove("hidden");
-      this.reset();
+    document.addEventListener('keydown', function(e){
+      const lb = document.getElementById("lightbox");
+      if (!lb) return;
+      if (lb.style.display === "flex" && e.key === "Escape") closeLightbox();
     });
+
+    function openSupportPanel() {
+  document.getElementById("supportPanel").style.display = "block";
+}
+
+function closeSupportPanel() {
+  document.getElementById("supportPanel").style.display = "none";
+}
+
   </script>
+
+  <div class="floating-social">
+  <a href="https://www.facebook.com/brian.taki.5" target="_blank" aria-label="Facebook">
+    <img src="https://i.ibb.co/v4NH1vdc/Face-icon-cvg.png" alt="Facebook" />
+  </a>
+
+  <a href="https://www.youtube.com/@tioteeribabaiti" target="_blank" aria-label="YouTube">
+    <img src="https://i.ibb.co/8g6fNMCF/Youtube-icon-cvg.png" alt="YouTube" />
+  </a>
+
+  <a href="https://neburafamily.github.io/portfolio/" target="_blank" aria-label="GitHub">
+    <img src="https://i.ibb.co/xKhZ29JJ/Github-cvg.png" alt="GitHub" />
+  </a>
+</div>
 
 </body>
 </html>
+
